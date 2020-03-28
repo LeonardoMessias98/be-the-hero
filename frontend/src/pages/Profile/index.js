@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 
 import { Link,useHistory } from 'react-router-dom';
 
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2 , FiCodepen } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -15,6 +15,7 @@ export default function Profile(){
   const ongId = localStorage.getItem('ongID');
   const [incidents,setIncidents] = useState([]);
   const history = useHistory();
+  const already = true;
 
   useEffect(()=>{
     api.get('profile',{
@@ -46,14 +47,31 @@ export default function Profile(){
     history.push('/');
   }
 
-  let [color,setColor] = useState("#e02041");
-
-  function TurnWhite(){   
-    setColor(color = "#ccc");
+  async function handlePerfil(){
+    history.push('/myong');
   }
 
-  function TurnRed(){
-    setColor(color = "#e02041");
+  let [colorLogout,setColorLogout] = useState("#e02041");
+  let [colorPerfil,setColorPerfil] = useState("#e02041");
+
+  function TurnWhite(how){
+    
+    if (how == 'Logout'){
+      setColorLogout(colorLogout = "#ccc");
+    }else{
+      setColorPerfil(colorPerfil = "#ccc")
+    }
+
+  }
+
+  function TurnRed(how){
+
+    if (how == 'Logout'){
+      setColorLogout(colorLogout = "#e02041");
+    }else{
+      setColorPerfil(colorPerfil = "#e02041")
+    }
+    
   }
 
   return (
@@ -64,11 +82,18 @@ export default function Profile(){
         
         <Link className="button" to="/incidents/new">Cadastrar novo caso</Link>
         <button 
-          onMouseEnter={TurnWhite} 
-          onMouseLeave={TurnRed} 
+          onMouseEnter={() => TurnWhite('Perfil')} 
+          onMouseLeave={() => TurnRed('Perfil')} 
+          onClick={handlePerfil}
+          type="button">
+          <FiCodepen id="icon" size={18} color={colorPerfil}/>
+        </button>
+        <button 
+          onMouseEnter={() => TurnWhite('Logout')} 
+          onMouseLeave={() => TurnRed('Logout')} 
           onClick={handleLogout}
           type="button">
-          <FiPower id="icon" size={18} color={color}/>
+          <FiPower id="icon" size={18} color={colorLogout}/>
         </button>
       </header>
 

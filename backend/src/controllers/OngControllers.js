@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const generateUniqueId = require('../utils/generateUniqueId');
 const connection = require('../database/connection');
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
     async create (request,response){
         const {name,email,whatsapp,city,uf} = request.body;
     
-        const id = crypto.randomBytes(4).toString("HEX");
+        const id = generateUniqueId();
     
         await connection('ongs').insert({
             id,
@@ -31,14 +31,15 @@ module.exports = {
 
         const ongs = await connection('ongs')
             .where('id',id)
-            .first()
-
+            .first();
+        
         if (ongs.id != id){
             return response.status(401).json({ error: 'Operation not permitted.' });
         }
-
+        
+        await connection('incidents').where('ong_id',id).delete();
         await connection('ongs').where('id',id).delete();
-
+        
         return response.status(204).send();
     }
 };
