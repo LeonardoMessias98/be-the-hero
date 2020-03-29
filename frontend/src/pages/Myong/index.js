@@ -1,7 +1,5 @@
 import React,{useState} from 'react';
 import { Link, useHistory} from 'react-router-dom';
-import { Form, Input } from '@rocketseat/unform';
-import * as Yup from 'yup';
 import { FiArrowLeft, FiTrash2 } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -9,22 +7,13 @@ import api from '../../services/api';
 import './style.css';
 import logoImg from '../../assets/logo.svg';
 
-const name = '';
-const email = '';
-const whatsapp = '';
-const city = '';
-const uf = '' 
-
-const schema = Yup.object().shape({
-  name: Yup.string().required("Insira o nome da sua ONG"),
-  email: Yup.string().email('Insira um email valido').required('Insira seu email'),
-  whatsapp: Yup.number().required("Insira o seu Whatsapp"),
-  city: Yup.string().required("Insira sua Cidade"),
-  uf: Yup.string().required("Insira seu UF"),
-});
-
 export default function Myong(){
-
+  const [name,setName] = useState()
+  const [email,setEmail] = useState()
+  const [whatsapp,setWhatsapp] = useState()
+  const [city,setCity] = useState()
+  const [uf,setUf] = useState()
+  
   const history = useHistory();
   
   const ongName = localStorage.getItem('ongName');
@@ -94,36 +83,42 @@ export default function Myong(){
           </Link>
         </section>
 
-        <Form schema={schema} onSubmit={() =>{}}>
-          <Input 
-            name="name"
+        <form  onSubmit={handleUpdate}>
+        <input 
             placeholder="Mudar nome da ONG"
+            value={name}
+            onChange={e=> setName(e.target.value)}
             />
 
-          <Input 
-            name="email"type="Mudar email" 
+          <input type="Mudar email" 
             placeholder="Email"
+            value={email}
+            onChange={e=> setEmail(e.target.value)}
             />
 
-          <Input 
-            name="whatsapp"
+          <input 
             placeholder="Mudar Whatsapp"
+            value={whatsapp}
+            onChange={e=> setWhatsapp(e.target.value)}
           />
 
-          <Input 
-            name="city"
+         
+          <input 
             placeholder="Mudar Cidade"
-          />
+            value={city}
+            onChange={e=> setCity(e.target.value)}
+            />
 
-          <Input 
-            name="uf"
+          <input 
             placeholder="Mudar UF"
-          />
+            value={uf}
+            onChange={e=> setUf(e.target.value)}
+            />
 
           
-          <button onClick={handleUpdate} className="button">Aplicar Mudanças</button>
+          <button type="submit" className="button">Aplicar Mudanças</button>
           
-        </Form>
+        </form>
       </div>
     </div>
   )
