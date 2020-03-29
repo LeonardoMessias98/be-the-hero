@@ -101,7 +101,6 @@ export default function Myong(){
             value={whatsapp}
             onChange={e=> setWhatsapp(e.target.value)}
           />
-
          
           <input 
             placeholder="Mudar Cidade"
