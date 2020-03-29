@@ -43,6 +43,9 @@
 }
 
 .myong-container .content form{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
   width: 100%;
   max-width: 450px;
 }
@@ -51,26 +54,28 @@
   font-weight: bold;
   width: 80%;
   height: 60px;
+  color: #fff;
   border: 1px solid #dcdce6;
   border-radius: 8px;
   padding: 0 24px;
-  background-color: #e02041;
+  background: linear-gradient(to top left,#f1684f, #e02041);
   margin-top: 8px;
   cursor: pointer;
-  transition: .4s;
+  transition: .6s;
 }
 
 .myong-container .content form input:focus{
+  color: #333;
   width: 100%;
-  background-color: #fff;
+  background: #fff;
   border-bottom: 2px;
 }
 
 .myong-container .content form input:hover{
+  color: #333;
   width: 100%;
-  background-color: #fff;
+  background: #fff;
   border-bottom: 2px;
-  filter: brightness(85%);
 }
 
 ::-webkit-input-placeholder{

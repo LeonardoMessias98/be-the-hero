@@ -44,7 +44,7 @@ textarea{
 .button{
   width: 100%;
   height: 60px;
-  background: #e02041;
+  background: linear-gradient(to top left,#f1684f, #e02041);
   border: 0;
   border-radius: 8px;
   color: #FFF;

@@ -37,13 +37,23 @@
   line-height: 32px;
 }
 
+::-webkit-input-placeholder{
+  color: #000;
+}
+
 .register-container .content form{
   width: 100%;
   max-width: 450px;
 }
 
 .register-container .content form input{
+  width: 80%;
   margin-top: 8px;
+  transition: .4s;
+}
+
+.register-container .content form input:hover{
+  width: 100%;
 }
 
 .register-container .content form .input-group{

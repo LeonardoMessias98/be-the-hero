@@ -13,24 +13,26 @@ export default function Myong(){
   const [whatsapp,setWhatsapp] = useState()
   const [city,setCity] = useState()
   const [uf,setUf] = useState()
-  
+
   const history = useHistory();
   
   const ongName = localStorage.getItem('ongName');
   const ongId = localStorage.getItem('ongID');
 
-
   async function handleUpdate(event){
     event.preventDefault();
-
-    const data = {name,email,whatsapp,city,uf};
     
+    const data = {name,email,whatsapp,city,uf};
+
     try{
       await api.put('ongs', data ,{
         headers:{
           Authorization: ongId,
         }
       })
+
+      localStorage.removeItem('ongName')
+      localStorage.setItem('ongName',data.name)
 
       history.push('/profile');
 
@@ -83,8 +85,8 @@ export default function Myong(){
           </Link>
         </section>
 
-        <form  onSubmit={handleUpdate}>
-        <input 
+        <form onSubmit={handleUpdate}>
+          <input 
             placeholder="Mudar nome da ONG"
             value={name}
             onChange={e=> setName(e.target.value)}
@@ -101,7 +103,7 @@ export default function Myong(){
             value={whatsapp}
             onChange={e=> setWhatsapp(e.target.value)}
           />
-         
+          
           <input 
             placeholder="Mudar Cidade"
             value={city}
