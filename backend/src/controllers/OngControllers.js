@@ -25,6 +25,26 @@ module.exports = {
         return response.json({id});
     },
 
+    async update (request,response){
+        const id = request.headers.authorization;
+
+        const data = request.body;
+
+        const ongs = await connection('ongs')
+            .where('id',id)
+            .first();
+
+        if (ongs.id != id){
+            return response.status(401).json({ error: 'Operation not permitted.' });
+        }
+
+        await connection('ongs')
+            .where('id',id)
+            .update(data)
+
+        return response.status(204).send();
+    },
+
     async delete (request, response){
 
         const id = request.headers.authorization;

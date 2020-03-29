@@ -23,6 +23,20 @@ routes.post('/ongs', celebrate({
   })
 }) , OngController.create);
 
+routes.put('/ongs', celebrate({
+  [Segments.BODY]:Joi.object().keys({
+    name: Joi.string().required(),
+    email: Joi.string().required().email(),
+    whatsapp: Joi.number().required(),
+    city: Joi.string().required(),
+    uf: Joi.string().required().length(2),
+  })
+}), celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.string().required()
+  }).unknown()
+}) , OngController.update);
+
 routes.delete('/ongs', celebrate({
   [Segments.HEADERS]: Joi.object({
     authorization: Joi.string().required()

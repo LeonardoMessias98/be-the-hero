@@ -34,9 +34,6 @@
   transition: background 0.8s;
 }
 
-.icon{
-  color:#dcdce6;
-}
 
 .profile-container header button:hover{
   background: #e02041;
@@ -63,6 +60,7 @@
 }
 
 .profile-container ul li button{
+  background-color: #FFF;
   position: absolute;
   right: 24px;
   top: 24px;

@@ -3,7 +3,7 @@
   top: 3px;
 }
 
-.register-container{
+.myong-container{
   width: 100%;
   max-width: 1120px;
   height: 100vh;
@@ -14,7 +14,7 @@
   justify-content: center;
 }
 
-.register-container .content{
+.myong-container .content{
   width: 100%;
   padding: 96px;
   background: #f0f0f5;
@@ -26,35 +26,78 @@
   align-items: center;
 }
 
-.register-container .content section{
+.myong-container .content section{
   width: 100%;
   max-width: 380px;
 }
 
-.register-container .content section h1{
+.myong-container .content section h1{
   margin: 64px 0 32px;
   font-size: 32px;
 }
 
-.register-container .content section p{
+.myong-container .content section p{
   font-size: 18px;
   color: #737380;
   line-height: 32px;
 }
 
-.register-container .content form{
+.myong-container .content form{
   width: 100%;
   max-width: 450px;
 }
 
-.register-container .content form input{
+.myong-container .content form input{
+  font-weight: bold;
+  width: 80%;
+  height: 60px;
+  border: 1px solid #dcdce6;
+  border-radius: 8px;
+  padding: 0 24px;
+  background-color: #e02041;
   margin-top: 8px;
+  cursor: pointer;
+  transition: .4s;
 }
 
-.register-container .content form .input-group{
+.myong-container .content form input:focus{
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 2px;
+}
+
+.myong-container .content form input:hover{
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 2px;
+  filter: brightness(85%);
+}
+
+::-webkit-input-placeholder{
+  color: #fff;
+}
+
+::-webkit-input-placeholder:focus{
+  color: #333;
+}
+
+.myong-container .content form .input-group{
   display: flex;
 }
 
-.register-container .content form .input-group input + input{
+.myong-container .content form .input-group input + input{
   margin-left: 8px;
+}
+
+.myong-container .content label {
+  top: 0;
+  left: 0; right: 0;
+  color: #616161;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  font-size: 1rem;
+  cursor: text;
+  transition: .2s ease-in-out;
+  box-sizing: border-box;
 }

@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 
 import { Link,useHistory } from 'react-router-dom';
 
-import { FiPower, FiTrash2 , FiCodepen } from 'react-icons/fi';
+import { FiPower, FiTrash2 , FiHome } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -86,7 +86,7 @@ export default function Profile(){
           onMouseLeave={() => TurnRed('Perfil')} 
           onClick={handlePerfil}
           type="button">
-          <FiCodepen id="icon" size={18} color={colorPerfil}/>
+          <FiHome id="icon" size={18} color={colorPerfil}/>
         </button>
         <button 
           onMouseEnter={() => TurnWhite('Logout')} 
@@ -111,9 +111,13 @@ export default function Profile(){
           <strong>VALOR:</strong>
           <p>{Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL'}).format(incident.value)}</p>
 
+          
+            
           <button onClick={()=> handleDeleteIncident(incident.id)} type="button">
+              
             <FiTrash2 size={18} color="#a8a8a8"/>
           </button>
+          
         </li>
         ))}
       </ul>
